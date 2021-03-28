@@ -4,12 +4,12 @@
 #include <locale.h>
 #define jg 3
 
-void jogos() /// fun��o para listar todos jogos
+void jogos() /// função para listar todos jogos
 {
     FILE *jgs;
     char jogo[30];
 
-    jgs = fopen("jogos.txt", "rt"); /// abri um arquivo de texto onde est� os jogos
+    jgs = fopen("jogos.txt", "rt"); /// abri um arquivo de texto onde está os jogos
 
     if(jgs != NULL)
     {
@@ -27,7 +27,7 @@ void jogos() /// fun��o para listar todos jogos
     }
     fclose(jgs); ///fecha o arquivo
 }
-void cadastro (char nome[]) /// fun��o para cadastro
+void cadastro (char nome[]) /// função para cadastro
 {
     ///setlocale(LC_ALL,"");
     FILE *cadastrar;
@@ -37,12 +37,12 @@ void cadastro (char nome[]) /// fun��o para cadastro
 
     if(cadastrar != NULL)
     {
-       fprintf(cadastrar, "%s ", nome);
-       for (i = 0; i < 11; i++)
-       {
-           fprintf(cadastrar, "%d",telefone[i]);
-       }
-       fprintf(cadastrar, "\n");
+        fprintf(cadastrar, "%s ", nome);
+        for (i = 0; i < 11; i++)
+        {
+            fprintf(cadastrar, "%d",telefone[i]);
+        }
+        fprintf(cadastrar, "\n");
 
         printf("\nCadastrado com sucesso!\n\n");
 
@@ -56,10 +56,10 @@ void cadastro (char nome[]) /// fun��o para cadastro
     {
         printf("\n\nERRO!\n\n");
     }
-    fclose(cadastrar); /// fecha o arquivo ap�s fazer o que tinha se ser feito
+    fclose(cadastrar); /// fecha o arquivo após fazer o que tinha se ser feito
 
 }
-void Menu () /// fun��o para menu
+void Menu () /// função para menu
 {
 
 
@@ -68,7 +68,7 @@ void Menu () /// fun��o para menu
     {
         printf("MENU\n\n");
         printf("1- Alugar jogos\n");
-        printf("\n2- Devolu��o\n");
+        printf("\n2- Devolução\n");
         printf("\n3- Sair\n");
         scanf("%d",&opc);
 
@@ -100,59 +100,59 @@ void Menu () /// fun��o para menu
     while(opc != 3);
 }
 
-void usuario () /// fun��o para conferir cadastro
+void usuario () /// função para conferir cadastro
 {
     ///setlocale(LC_ALL, "");
     int retorno, flg = 0;
     char cliente[30], listado[30];
     FILE *confere;
 
-    printf("Digite seu nome de usu�rio: "); /// pedindo o nome de usu�rio
+    printf("Digite seu nome de usuário: "); /// pedindo o nome de usuário
     setbuf(stdin, NULL);
     gets(cliente);
 
     confere = fopen("clientes.txt", "r"); /// Abre arquivo no modo leitura 'r', se fosse 'w' seria para gravar excluindo
-                                         /// o  conte�do anterior e 'a' grava e mant�m o conte�do do arquivo
+    /// o  conteúdo anterior e 'a' grava e mantém o conteúdo do arquivo
 
-    if(confere == NULL) /// se o arquivo n�o abrir executa o que est� dentro, no caso aqui, se for igual a NULL
+    if(confere == NULL) /// se o arquivo não abrir executa o que está dentro, no caso aqui, se for igual a NULL
     {
-       printf("\n\nERRO ao  abrir o arquivo!\n\n ");
-       system("pause");
-       return 1;
+        printf("\n\nERRO ao  abrir o arquivo!\n\n ");
+        system("pause");
+        return 1;
     }
 
-/// procurar pelo usu�rio-----------------------------------------
+/// procurar pelo usuário-----------------------------------------
 
     while(fscanf(confere, "%s", &listado)!=EOF)
     {
         fflush(stdin);
         if(strcmp(listado,cliente) == 0)
-            {
-                system("cls");
-                printf("Bem vindo(a) de volta, %s! \n\n", listado);
-                flg++;
-                Menu();
-            }
+        {
+            system("cls");
+            printf("Bem vindo(a) de volta, %s! \n\n", listado);
+            flg++;
+            Menu();
+        }
     }
 ///----------------------------------------------------------------
-    fclose(confere); /// fecho o arquivo ap�s as opera��es feitas
+    fclose(confere); /// fecho o arquivo após as operações feitas
 
-     if (flg != 0)
-            {
-                printf("\n\nUsu�rio n�o encontrado, por favor tente novamente!\n\n");
+    if (flg != 0)
+    {
+        printf("\n\nUsuário não encontrado, por favor tente novamente!\n\n");
 
-                system("pause");
-                system("cls");
+        system("pause");
+        system("cls");
 
-                main();
-            }
+        main();
+    }
 }
 
-int main() /// fun��o principal
+int main() /// função principal
 {
     setlocale(LC_ALL, "");
 
-    int jogos_disponiveis , opcao, jogos_alugados = 0, total_jogos = jg;
+    int jogos_disponiveis, opcao, jogos_alugados = 0, total_jogos = jg;
     char nome[30], cliente[30];
 
     jogos_disponiveis = total_jogos - jogos_alugados;
@@ -161,7 +161,7 @@ int main() /// fun��o principal
 
     /// conferir cadastro -----------------------------------------
 
-    printf("Possui cadastro ? sim (1) ou n�o (2): ");
+    printf("Possui cadastro ? sim (1) ou não (2): ");
     scanf("%d", &opcao);
 
     system("cls");
@@ -183,3 +183,4 @@ int main() /// fun��o principal
 
     return 0;
 }
+
